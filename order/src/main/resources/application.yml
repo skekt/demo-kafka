@@ -1,0 +1,39 @@
+server:
+  port: 8082
+#  servlet:
+#    context-path: /customer-order/order-service
+
+spring:
+  application:
+    name : order-service
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: H2
+    show-sql: true
+  kafka:
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: AWS_MSK_IAM
+      sasl.jaas.config: software.amazon.msk.auth.iam.IAMLoginModule required;
+      sasl.client.callback.handler.class: software.amazon.msk.auth.iam.IAMClientCallbackHandler
+
+
+customer:
+  topic:
+    name: customerTopic
+
+order:
+  topic:
+    name: orderTopic
+
+kafka:
+  bootstrapAddress: localhost:9092
