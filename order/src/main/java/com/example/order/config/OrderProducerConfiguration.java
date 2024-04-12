@@ -29,17 +29,12 @@ public class OrderProducerConfiguration {
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
+        configProps.put("security.protocol", "SASL_SSL");
+        configProps.put("sasl.mechanism", "AWS_MSK_IAM");
+        configProps.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+        configProps.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
 
-//        configProps.put("security.protocol", "SASL_SSL");
-//        configProps.put("sasl.mechanism", "AWS_MSK_IAM");
-//        configProps.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
-//        configProps.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
-
-
-        System.out.println(configProps);
-
-
-
+        System.out.println("DefaultKafkaProducerFactory config: " + configProps);
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }
