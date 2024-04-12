@@ -36,4 +36,4 @@ order:
     name: orderTopic
 
 kafka:
-  bootstrapAddress: localhost:9092
+  bootstrapAddress: boot-mjlfzxah.c1.kafka-serverless.ap-northeast-2.amazonaws.com:9098
