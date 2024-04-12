@@ -19,7 +19,9 @@ dependencies {
 	implementation 'org.springframework.kafka:spring-kafka'
 	implementation 'commons-lang:commons-lang:2.6'
 	implementation "io.springfox:springfox-boot-starter:3.0.0"
-	implementation 'software.amazon.msk:aws-msk-iam-auth:2.1.0'
+	implementation platform('software.amazon.awssdk:bom:2.20.56')
+	implementation 'com.amazonaws:aws-java-sdk-bom:1.11.228'
+	implementation 'software.amazon.awssdk:ssm'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
